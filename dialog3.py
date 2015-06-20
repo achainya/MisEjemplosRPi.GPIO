@@ -1,12 +1,16 @@
 import sys, os, os.path, time, string, dialog
 import RPi.GPIO as GPIO
 
+PIN1 = 11
+PIN2 = 12
+PIN3 = 13
+
 FAST_DELAY = 0
 #GPIO.setmode(GPIO.BCM)
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11, GPIO.OUT)
-GPIO.setup(12, GPIO.OUT)
-GPIO.setup(13, GPIO.OUT)
+GPIO.setup(PIN1, GPIO.OUT)
+GPIO.setup(PIN2, GPIO.OUT)
+GPIO.setup(PIN3, GPIO.OUT)
 
 def handle_exit_code(d, code):
     if code in (d.DIALOG_CANCEL, d.DIALOG_ESC):
@@ -66,16 +70,16 @@ def blink(d, ni):
     d.gauge_start("Progreso: 0%", title="Por favor espere...")
     iteracion = 0
     while iteracion < int(ni): ## Segundos que durara la funcion
-        GPIO.output(11, True) ## Enciendo el 17
-        GPIO.output(12, False) ## Apago el 18
-	GPIO.output(13, True) ## Enciendo el 27
+        GPIO.output(PIN1, True) ## Enciendo el 17
+        GPIO.output(PIN2, False) ## Apago el 18
+        GPIO.output(PIN3, True) ## Enciendo el 27
         if FAST_DELAY:
             time.sleep(0.2) ## Esperamos 1 segundo
         else:
             time.sleep(0.5)
-        GPIO.output(11, False) ## Apago el 17
-        GPIO.output(12, True) ## Enciendo el 18
-	GPIO.output(12, False) ## Apago el 27
+        GPIO.output(PIN1, False) ## Apago el 17
+        GPIO.output(PIN2, True) ## Enciendo el 18
+        GPIO.output(PIN3, False) ## Apago el 27
         if FAST_DELAY:
             time.sleep(0.2) ## Esperamos 1 segundo
         else:
