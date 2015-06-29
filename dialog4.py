@@ -1,7 +1,7 @@
 import sys, os, os.path, time, string, dialog
 import RPi.GPIO as GPIO
 
-PIN4 = 36
+PIN1 = 36
 PIN2 = 11
 PIN3 = 12
 PIN4 = 35
@@ -13,7 +13,7 @@ PIN8 = 16
 FAST_DELAY = 0
 #GPIO.setmode(GPIO.BCM)
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(PIN4, GPIO.OUT)
+GPIO.setup(PIN1, GPIO.OUT)
 GPIO.setup(PIN2, GPIO.OUT)
 GPIO.setup(PIN3, GPIO.OUT)
 GPIO.setup(PIN4, GPIO.OUT)
