@@ -1,9 +1,14 @@
 import sys, os, os.path, time, string, dialog
 import RPi.GPIO as GPIO
 
-PIN1 = 11
-PIN2 = 12
-PIN3 = 13
+PIN1 = 36
+PIN2 = 11
+PIN3 = 12
+PIN4 = 35
+PIN5 = 38
+PIN6 = 40
+PIN7 = 15
+PIN8 = 16
 
 FAST_DELAY = 0
 #GPIO.setmode(GPIO.BCM)
@@ -11,6 +16,11 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(PIN1, GPIO.OUT)
 GPIO.setup(PIN2, GPIO.OUT)
 GPIO.setup(PIN3, GPIO.OUT)
+GPIO.setup(PIN4, GPIO.OUT)
+GPIO.setup(PIN5, GPIO.OUT)
+GPIO.setup(PIN6, GPIO.OUT)
+GPIO.setup(PIN7, GPIO.OUT)
+GPIO.setup(PIN8, GPIO.OUT)
 
 def handle_exit_code(d, code):
     if code in (d.DIALOG_CANCEL, d.DIALOG_ESC):
@@ -70,16 +80,26 @@ def blink(d, ni):
     d.gauge_start("Progreso: 0%", title="Por favor espere...")
     iteracion = 0
     while iteracion < int(ni): ## Segundos que durara la funcion
-        GPIO.output(PIN1, True) ## Enciendo el 17
-        GPIO.output(PIN2, False) ## Apago el 18
-        GPIO.output(PIN3, True) ## Enciendo el 27
+        GPIO.output(PIN1, True)
+        GPIO.output(PIN2, False)
+        GPIO.output(PIN3, True)
+        GPIO.output(PIN4, False) 
+        GPIO.output(PIN5, True)
+        GPIO.output(PIN6, False) 
+        GPIO.output(PIN7, True) 
+        GPIO.output(PIN8, False)
         if FAST_DELAY:
             time.sleep(0.2) ## Esperamos 1 segundo
         else:
             time.sleep(0.5)
-        GPIO.output(PIN1, False) ## Apago el 17
-        GPIO.output(PIN2, True) ## Enciendo el 18
-        GPIO.output(PIN3, False) ## Apago el 27
+        GPIO.output(PIN1, False) 
+        GPIO.output(PIN2, True)
+        GPIO.output(PIN3, False) 
+        GPIO.output(PIN4, True)
+        GPIO.output(PIN5, False) 
+        GPIO.output(PIN6, True)
+        GPIO.output(PIN7, False) 
+        GPIO.output(PIN8, True)
         if FAST_DELAY:
             time.sleep(0.2) ## Esperamos 1 segundo
         else:
