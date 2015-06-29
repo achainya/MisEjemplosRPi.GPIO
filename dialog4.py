@@ -82,46 +82,31 @@ def send_byte(bits, mode):
 	# mode = True  for character
 	#        False for command
 
+	# High bits
+	GPIO.output(PIN1, False)
+	GPIO.output(PIN2, False)
+	GPIO.output(PIN3, False)
+	GPIO.output(PIN4, False)
+	GPIO.output(PIN5, False)
+	GPIO.output(PIN6, False)
+	GPIO.output(PIN7, False)
+	GPIO.output(PIN8, False)
 	if bits&0x01==0x01:
-		if mode==True:
-			GPIO.output(PIN1, True)
-		else:
-			GPIO.output(PIN1, False)
+		GPIO.output(PIN1, True)
 	if bits&0x02==0x02:
-		if mode==True:
-			GPIO.output(PIN2, True)
-		else:
-			GPIO.output(PIN2, False)
+		GPIO.output(PIN2, True)
 	if bits&0x04==0x04:
-		if mode==True:
-			GPIO.output(PIN3, True)
-		else:
-			GPIO.output(PIN3, False)
+		GPIO.output(PIN3, True)
 	if bits&0x08==0x08:
-		if mode==True:
-			GPIO.output(PIN4, True)
-		else:
-			GPIO.output(PIN4, False)
+		GPIO.output(PIN4, True)
 	if bits&0x10==0x10:
-		if mode==True:
-			GPIO.output(PIN5, True)
-		else:
-			GPIO.output(PIN5, False)
+		GPIO.output(PIN5, True)
 	if bits&0x20==0x20:
-		if mode==True:
-			GPIO.output(PIN6, True)
-		else:
-			GPIO.output(PIN6, False)
+		GPIO.output(PIN6, True)
 	if bits&0x40==0x40:
-		if mode==True:
-			GPIO.output(PIN7, True)
-		else:
-			GPIO.output(PIN7, False)
+		GPIO.output(PIN7, True)
 	if bits&0x80==0x80:
-		if mode==True:
-			GPIO.output(PIN8, True)
-		else:
-			GPIO.output(PIN8, False)
+		GPIO.output(PIN8, True)
 
 def blink(d, ni):
 	d.gauge_start("Progreso: 0%", title="Por favor espere...")
